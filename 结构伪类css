@@ -1,0 +1,253 @@
+1.外边距问题<style>
+        .fether{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            /* 用border解决 */
+            /* border: 1px solid black; */
+            /* 用padding解决 */
+            /* padding-top: 50px; */
+            /* 用 overflow: hidden;解决*/
+            /* overflow: hidden; */
+           
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            /* 错误示范 */
+            /* margin-top: 50px; */
+            /* display: inline-block; */
+        }
+        span{
+            /* margin: 100px;
+            padding: 100px; */
+            line-height: 100px;
+        }
+    </style>
+    <script>
+        /*
+            1.外边距折叠现象-合并现象  解决方法：只给其中一个盒子设置margin
+            2.外边距折叠现象-塌陷现象  解决方法：
+             .给父元素设置border-top或者padding-top（分隔父子元素的margin-top）
+             .给父元素设置overflow：hidden
+             .转换成行内块元素
+             .设置浮动
+            3.行内元素内外边距  
+             .行内标签的margin-top和bottom不生效
+             .行内标签的padding-top和bottom不生效
+        */ 
+    </script>
+    <div class="fether">
+        <div class="son">222</div>
+    </div>
+    <span>span</span>
+    <span>span</span>
+    2.结构伪类<style>
+        /* 这是第一个li */
+        /* li:first-child{
+            background-color: sandybrown;
+        } */
+        /* 这是最后一个li */
+        /* li:last-child{
+            background-color: pink;
+        } */
+        /* 这是任意一个li */
+        /* li:nth-child(4){
+            background-color: seagreen;
+        } */
+        /* 这是倒数任意一个li */
+        /* li:nth-last-child(2){
+            background-color: blue;
+        } */
+        /* .father{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            
+        }
+        .father::before{
+            content: '老鼠';
+        }
+        .father::after{
+            content: '大米';
+        } */
+        /* 浮动标签 顶对齐 */
+        /* 浮动：在一行排列，宽高生效--浮动后的标签具有行内块特点 */
+        .one{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            float: left;
+
+            margin-top:50px ;
+        }
+        .two{
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            float: left;
+            /* 因为有浮动 不能生效--盒子无法水平居中 */
+            margin: 0 auto;
+        }
+        .therr{
+            width: 300px;
+            height: 300px;
+            background-color: orange;
+        }
+    </style>
+    <script>
+        /*
+            1.结构伪类选择器  
+             .作用：根据元素在HTML中的结构关系查找元素
+             .优势：减少对于HTML中类的依赖，有利于保持代码整洁
+             .场景：常用于查找某父级选择器的子元素
+             .选择器：
+             .E：first-child{} 匹配父元素中第一个子元素，并且是E元素
+             .E：last-child{} 匹配父元素中最后一个子元素，并且是E元素
+             .E：nth-child（n）{} 匹配父元素中第n个子元素，并且是E元素
+             .E：nth-last-child（n）{} 匹配父元素中倒数第n个子元素，并且是E元素
+             .n的注意点： n为：0、1、2、3、4、5....
+             .通过n可以组成常见公式
+             .偶数：2n、even
+             .奇数:2n+1、2n-1、odd
+             .找到前五个:-n+5
+             .找到从第五个往后：n+5
+            2.伪元素 （一般网页中的非主流体内容可以使用伪元素）
+             .区别：
+             .元素：HTML设置标签
+             .伪元素：由CSS模拟出的标签效果
+             种类：
+             .：：before 在父元素内容的最前添加一个伪元素
+             .：：after  在父元素内容的最后添加一个伪元素
+             注意：1.必须设置content属性才能生效
+                   2.伪元素默认是行内元素
+            3.标准流 又称文档流，是浏览器在渲染显示网页内容时默认采用的一套排版规则
+             .块级元素：从上往下，垂直布局，独占一行
+             .行内元素或行内块元素：从左往右，水平布局，空间不够自动拆行
+            4.浮动 属性名 float
+             .特点：浮动元素会脱离标准流，不占标准流的位置
+             .浮动元素比标准流高半个级别，可以覆盖标准流中的元素
+             .浮动找浮动，下一个浮动元素会在上一个浮动元素后面左右浮动
+             .浮动元素有特殊的显示效果：
+             .一行可以显示多个
+             .可以设置宽高
+             注意：浮动的元素不能通过text-align：center或者margin：0 auto 
+               
+        */ 
+    </script>
+    <!-- ul>li{这是第$个li}*8 -->
+    <!-- <ul>
+        <li>这是第1个li</li>
+        <li>这是第2个li</li>
+        <li>这是第3个li</li>
+        <li>这是第4个li</li>
+        <li>这是第5个li</li>
+        <li>这是第6个li</li>
+        <li>这是第7个li</li>
+        <li>这是第8个li</li>
+    </ul> -->
+    <!-- <div class="father">爱</div> -->
+    <div class="one">one</div>
+    <div class="two">two</div>
+    <div class="therr">therr</div>
+    小米案例1<style>
+        *{
+        margin: 0;
+        padding: 0;
+    }
+    .box{
+        margin: 0 auto;
+        width: 1226px;
+        height: 614px;
+        background-color: pink;
+    }
+    .left{
+        float: left;
+        width: 234px;
+        height: 614px;
+        background-color: #800080;
+    }
+    .right{
+        float: right;
+        width: 978px;
+        height: 614px;
+        background-color: green;
+    }
+    ul{
+        /* 去掉列表符号 */
+        list-style: none;
+    }
+    .right li{
+        float: left;
+        margin-right: 14px;
+        margin-bottom: 14px;
+        width: 234px;
+        height: 300px;
+        background-color: #87ceeb;
+    }
+    .right li:nth-child(4n){
+        margin-right: 0;
+    }
+    </style>
+    <div class="box">
+        <div class="left"></div>
+        <div class="right">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+   小米布局 案例2*{
+            margin: 0;
+            padding: 0;
+        }
+        .top{
+            /* 宽度高度背景色 */
+            height: 40px;
+            background-color: #333;
+        }
+        .header{
+            width: 1226px;
+            height: 100px;
+            background-color: #ffc0cb;
+            margin: 0 auto;
+        }
+        .content{
+            width: 1226px;
+            height: 460px;
+            /* background-color: #fff; */
+            margin: 0 auto;
+        }
+        .left{
+            width: 234px;
+            height: 460px;
+            background-color: #ffa500;
+            float: left;
+        }
+        .right{
+            width: 992px;
+            height: 460px;
+            background-color: #87ceeb;
+            float: left;
+        }
+        /* CSS书写顺序，浏览器执行效率更高
+           1.浮动/display
+           2.盒子模型：margin border padding 宽度高度背景色
+           3.文字样式 
+        */
+    </style>
+     <!-- 通栏的盒子：宽度和浏览器一样大 -->
+    <div class="top"></div>
+    <div class="header"></div>
+    <div class="content">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
